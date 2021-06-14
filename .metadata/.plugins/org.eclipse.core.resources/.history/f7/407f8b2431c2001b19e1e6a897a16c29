@@ -1,0 +1,23 @@
+package com.item.service.app.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+public class Item {
+	
+	private ProductEntity product;
+	private Integer cant;
+	
+	public Double getTotal() {
+		return product.getPrice() * cant.doubleValue();
+	}
+
+	public Item() {
+	}
+
+	public Item(Product product, Integer cant) {
+		this.product = product;
+		this.cant = cant;
+	}
+}

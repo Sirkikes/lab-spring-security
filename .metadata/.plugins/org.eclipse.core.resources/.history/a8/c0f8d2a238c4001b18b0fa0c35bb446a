@@ -1,0 +1,5 @@
+package com.oauth.service.app.security;
+
+public class AuthorizationServerConfig {
+
+}

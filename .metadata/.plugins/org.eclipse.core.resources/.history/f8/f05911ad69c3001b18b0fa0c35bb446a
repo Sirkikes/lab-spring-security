@@ -1,0 +1,5 @@
+package com.oauth.service.app.clients;
+
+public interface UserFeignClient {
+
+}

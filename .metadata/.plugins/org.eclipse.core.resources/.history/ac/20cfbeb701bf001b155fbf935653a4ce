@@ -1,0 +1,51 @@
+package com.item.service.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.item.service.app.model.Item;
+import com.item.service.app.model.Product;
+import com.item.service.app.services.ItemService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@RestController
+public class ItemController {
+
+	@Autowired
+	@Qualifier("serviceFeign")
+	private ItemService itemService;
+	
+	@Value("${configuracion.texto}")
+	private String texto;
+
+	@GetMapping("/listItem")
+	public List<Item> list() {
+		return itemService.findAll();
+	}
+
+	@HystrixCommand(fallbackMethod = "alternativeMethod")
+	@GetMapping("/list/{id}/cant/{cant}")
+	public Item detail(@PathVariable Long id, @PathVariable Integer cant) {
+		return itemService.findById(id, cant);
+	}
+	
+	public Item alternativeMethod(Long id, Integer cantidad) {
+		Item item = new Item();
+		Product product = new Product();
+		
+		item.setCant(cantidad);
+		product.setIdProduct(id);
+		product.setName("Camara Sony");
+		product.setPrice(500.00);
+		item.setProduct(product);
+		return item;
+		
+	}
+
+}
