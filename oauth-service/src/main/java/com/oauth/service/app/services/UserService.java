@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import com.oauth.service.app.clients.UserFeignClient;
 import com.user.service.commons.app.entity.UserEntity;
 
+import brave.Tracer;
+
 @Service
 public class UserService implements  IUserService, UserDetailsService{
 	
@@ -24,6 +26,9 @@ public class UserService implements  IUserService, UserDetailsService{
 	
 	@Autowired
 	private UserFeignClient userFeignClient;
+	
+	@Autowired
+	private Tracer tracer;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
