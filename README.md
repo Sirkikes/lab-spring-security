@@ -1,19 +1,19 @@
 # lab-spring-security
 
-#README
+## README
 
-###para crear la red
+### para crear la red
 docker network create springcloud
 
-###Cofig-Server
+### Cofig-Server
 docker build -t config-server:v1 .
 docker run -p 8888:8888 --name config-server --network springcloud config-server:v1 
 
-###para la BD
+### para la BD
 docker pull mysql:8
 docker run -p 3306:3306 --name ms-mysql8 --network springcloud -e MYSQL_ROOT_PASSWORD=Ory1102 -e MYSQL_DATABASE=micros -d mysql:8
 
-###Product Service
+### Product Service
 docker build -t product-service:v1 .
 docker run -P --network springcloud product-service:v1 
 
@@ -21,23 +21,23 @@ docker run -P --network springcloud product-service:v1
 docker build -t zuul-server:v1 .
 docker run -p 8090:8090 --network springcloud zuul-server:v1 
 
-###USER Service
+### USER Service
 docker build -t user-service:v1 .
 docker run -P --network springcloud user-service:v1 
 
-###oauth Service
+### oauth Service
 docker build -t oauth-service:v1 .
 docker run -p 9100:9100 --network springcloud oauth-service:v1
 
-###item Service
+### item Service
 docker build -t item-service:v1 .
 docker run -p 8002:8002 -p 8005:8005 -p 8007:8007 --network springcloud item-service:v1
 
-###Zipkin server
+### Zipkin server
 docker build -t zipkin-server:v1 .
 docker run -p 9411:9411 --name zipkin-server --network springcloud zipkin-server:v1
 
-##INSERTS
+## INSERTS
 INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('sacunam', '1234', 1, 'Sebastián', 'Acuña', 'sacunam@gmail.com');
 INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('jluffin', '1234', 1, 'Jorge', 'Lufín', 'conserjeria.cibercentro@gmail.com');
 INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('esachez', '1234', 1, 'Edgar', 'Sánchez', 'es651259@gmail.com');
@@ -88,7 +88,7 @@ INSERT INTO micros.products (name, price, creat_at) VALUES('Nike', 100, NOW());
 INSERT INTO micros.products (name, price, creat_at) VALUES('Adidas', 200, NOW());
 INSERT INTO micros.products (name, price, creat_at) VALUES('Reebok', 300, NOW());
 
-#Esquema ZIPKIN DDL
+# Esquema ZIPKIN DDL
 
 --
 -- Copyright 2015-2019 The OpenZipkin Authors
