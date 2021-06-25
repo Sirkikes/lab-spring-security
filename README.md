@@ -17,8 +17,8 @@ docker run -p 3306:3306 --name ms-mysql8 --network springcloud -e MYSQL_ROOT_PAS
 docker build -t product-service:v1 .
 docker run -P --network springcloud product-service:v1 
 
-###zuul-server
-docker build -t zuul-server:v1 .
+### zuul-server  
+docker build -t zuul-server:v1 .  
 docker run -p 8090:8090 --network springcloud zuul-server:v1 
 
 ### USER Service
