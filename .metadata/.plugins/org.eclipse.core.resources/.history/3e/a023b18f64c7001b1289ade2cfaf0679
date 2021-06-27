@@ -1,5 +1,0 @@
-package com.oauth.service.app.services;
-
-public interface IUserService {
-
-}

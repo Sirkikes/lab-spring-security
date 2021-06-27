@@ -1,7 +1,0 @@
-package com.user.service.app.entity;
-
-import java.io.Serializable;
-
-public class Rol  implements Serializable{
-
-}

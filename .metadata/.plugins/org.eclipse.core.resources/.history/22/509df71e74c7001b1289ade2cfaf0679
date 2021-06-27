@@ -1,5 +1,0 @@
-package com.item.zuul.app.oauth;
-
-public class ResourceServerConfig {
-
-}

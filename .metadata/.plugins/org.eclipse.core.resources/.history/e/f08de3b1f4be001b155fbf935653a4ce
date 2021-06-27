@@ -1,8 +1,0 @@
-package com.item.zuul.app.filter;
-
-import org.springframework.stereotype.Component;
-
-@Component
-public class PostElapsedTimeFilter extends ZuulFilter{
-
-}

@@ -1,5 +1,0 @@
-package com.item.zuul.app.filter;
-
-public class PostElapsedTimeFilter {
-
-}
