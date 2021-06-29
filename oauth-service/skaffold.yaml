@@ -1,0 +1,14 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: oauth-service
+build:
+  artifacts:
+    - image: oauth-service
+      jib: {}
+  local: {}
+
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/oauth-service.yaml

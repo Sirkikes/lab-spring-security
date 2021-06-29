@@ -1,0 +1,14 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: zuul-server
+build:
+  artifacts:
+    - image: zuul-server
+      jib: {}
+  local: {}
+
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/zuul-server.yaml

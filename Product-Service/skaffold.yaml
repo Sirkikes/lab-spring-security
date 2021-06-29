@@ -1,0 +1,14 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: product-service
+build:
+  artifacts:
+    - image: product-service
+      jib: {}
+  local: {}
+
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/product-service.yaml

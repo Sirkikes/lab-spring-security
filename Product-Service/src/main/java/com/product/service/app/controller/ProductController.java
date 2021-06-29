@@ -31,7 +31,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("/list")
+	@GetMapping("/product/list")
 	public List<ProductEntity> list() {
 		return productService.findAll().stream().map(product -> {
 			// producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
@@ -41,7 +41,7 @@ public class ProductController {
 
 	}
 
-	@GetMapping("/list/{id}")
+	@GetMapping("/product/list/{id}")
 	public ResponseEntity<ProductEntity> listById(@PathVariable Long id) {
 		ProductEntity product = productService.findById(id);
 		//producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
@@ -49,13 +49,13 @@ public class ProductController {
 		return new ResponseEntity<>(product, HttpStatus.OK);
 	}
 	
-	@PostMapping("/create")
+	@PostMapping("/product/create")
 	public ResponseEntity<ProductEntity> create(@RequestBody ProductEntity product) {
 		return  new ResponseEntity(productService.save(product), HttpStatus.CREATED);
 		
 	}
 	
-	@PutMapping("/edit/{id}")
+	@PutMapping("/product/edit/{id}")
 	public ResponseEntity<ProductEntity> edit(@RequestBody ProductEntity product, @PathVariable Long id) {
 		ProductEntity productDb = productService.findById(id);
 		
@@ -65,7 +65,7 @@ public class ProductController {
         return new ResponseEntity(productService.save(productDb), HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/product/delete/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		productService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

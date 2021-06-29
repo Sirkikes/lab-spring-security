@@ -1,0 +1,14 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: user-service
+build:
+  artifacts:
+    - image: user-service
+      jib: {}
+  local: {}
+
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/user-service.yaml

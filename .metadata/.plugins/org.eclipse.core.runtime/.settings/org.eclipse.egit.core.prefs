@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=D\:\\Proyectos\\WS-MS-Nuevos\\config\\.git;
-GitRepositoriesView.GitDirectories.relative=config\\.git;
+GitRepositoriesView.GitDirectories=D\:\\Proyectos\\WS-MS-Nuevos\\config\\.git;D\:\\Proyectos\\WS-MS-Nuevos\\.git;
+GitRepositoriesView.GitDirectories.relative=config\\.git;.git;
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
