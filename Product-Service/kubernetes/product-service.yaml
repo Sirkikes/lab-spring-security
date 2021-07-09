@@ -1,7 +1,19 @@
-apiVersion: v1
-kind: Secret
+apiVersion: v1 
+kind: Pod
 metadata:
   name: product-service
+spec:
+  hostNetwork: true
+  containers:
+  - name: product-service
+    image: product-service
+    ports:
+    - containerPort: 65130
+      hostPort: 65130
+    resources:
+      limits:
+        memory: "256Mi"
+        cpu: "500m"
 
 ---
 apiVersion: apps/v1
@@ -34,6 +46,7 @@ metadata:
   labels:
     app: product-service
 spec:
+  type: NodePort
   ports:
     - port: 65130
       protocol: TCP
